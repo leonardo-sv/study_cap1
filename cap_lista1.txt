@@ -1,0 +1,79 @@
+Aluno: Leonardo de Souza Vieira
+
+Lista1
+
+1-)
+    a-) No compilador gcc 5.4.0 não ocorreu nenhuma mensagem de erro. No caso do compilador  gcc que estou utilizando
+    a biblioteca string é incluída por default pela biblioteca iostream.
+
+    b-) O programa ao ser compilado apresentou as seguintes mensagens:
+
+    ex1.cpp: In function ‘int main()’:
+    ex1.cpp:8:3: error: ‘string’ was not declared in this scope
+       string nome;
+       ^
+    ex1.cpp:8:3: note: suggested alternatives:
+    In file included from /usr/include/c++/5/iosfwd:39:0,
+                     from /usr/include/c++/5/ios:38,
+                     from /usr/include/c++/5/ostream:38,
+                     from /usr/include/c++/5/iostream:39,
+                     from ex1.cpp:1:
+    /usr/include/c++/5/bits/stringfwd.h:74:33: note:   ‘std::__cxx11::string’
+       typedef basic_string<char>    string;
+                                     ^
+    /usr/include/c++/5/bits/stringfwd.h:74:33: note:   ‘std::__cxx11::string’
+    ex1.cpp:10:3: error: ‘cout’ was not declared in this scope
+       cout << "Qual o seu nome? ";
+       ^
+    ex1.cpp:10:3: note: suggested alternative:
+    In file included from ex1.cpp:1:0:
+    /usr/include/c++/5/iostream:61:18: note:   ‘std::cout’
+       extern ostream cout;  /// Linked to standard output
+                      ^
+    ex1.cpp:12:3: error: ‘cin’ was not declared in this scope
+       cin >> nome;
+       ^
+    ex1.cpp:12:3: note: suggested alternative:
+    In file included from ex1.cpp:1:0:
+    /usr/include/c++/5/iostream:60:18: note:   ‘std::cin’
+       extern istream cin;  /// Linked to standard input
+                      ^
+    ex1.cpp:12:10: error: ‘nome’ was not declared in this scope
+       cin >> nome;
+              ^
+    ex1.cpp:14:49: error: ‘endl’ was not declared in this scope
+       cout << "\nOlá " << nome.find('c') << "!" << endl;
+                                                     ^
+    ex1.cpp:14:49: note: suggested alternative:
+    In file included from /usr/include/c++/5/iostream:39:0,
+                     from ex1.cpp:1:
+    /usr/include/c++/5/ostream:590:5: note:   ‘std::endl’
+         endl(basic_ostream<_CharT, _Traits>& __os)
+
+
+    As mensagens de erro apresentam o nome do programa a linha na qual ocorreu o problema e o id do erro. No caso,
+    os erros apresentados dizem que as palavras chave 'string', 'cout', 'cin', 'nome' e 'endl' não foram declaradas no
+    escopo do programa. Além das mensagens de erro, o compilador gcc apresenta a cada erro reportado algumas
+    alternativas para solução do problema que são apresentadas com a palavra 'note' ao invés de 'error'. No caso
+    das palavras 'cout', 'cin' e 'endl' a sugestão é a mesma adicionar o namespace antes de cada palavra. Já na
+    palavra 'string' apresenta uma mensagem um pouco diferente, pois apesar da inserção automática da bibioteca
+    'string' a palavra 'string' não pertence a biblioteca 'iostream'.
+
+    c-) O compilador apresentou a seguinte mensagem:
+
+    /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o: na função `_start':
+    (.text+0x20): referência indefinida para `main'
+    collect2: error: ld returned 1 exit status
+
+    Neste caso o compilador não encontrou a referência para a função main. A função _start por default procura uma
+    referência para a função main para execução do programa. Porém, caso o programa fosse compilado em uma versão
+    anterior ao c++03 seria possível executar o programa alterando a função _start.
+
+6-)
+   O primeiro erro ocorreu pela falta da inclusão da biblioteca #include <iterator>. Além disso, os valores passados para
+   função troca foram passados por valor, ou seja, uma cópia do valor dos elementos do vetor foi realizada. Sendo assim, os
+   valores a e b da função pertenciam ao escopo da função não alterando o valores do vetor. Para consertar este problema
+   bastou passar os valores do vetor como referência. Tornando as variáveis inteiras 'a' e 'b' ponteiros para a posição do vetor. O último
+   problema foi encontrado na lógica da função, onde o valor do elemento do vetor agora referenciado por '*a' não era alterado. Para
+   corrigir o problema bastou que a variavel temporária recebece o valor do elemento do vetor referenciado por '*b' ao invés de
+   '*a' .
