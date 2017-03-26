@@ -1,7 +1,3 @@
-/*
-Leonardo de Souza Vieira
-24/03/2017
-*/
 
 #include <iostream>
 #include <utility>

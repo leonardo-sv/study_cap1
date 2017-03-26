@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
    media = soma/tam;
 
    cout << soma << endl;
-   cout << media<< endl;
+   cout << media << endl;
 
    return 0;
 }

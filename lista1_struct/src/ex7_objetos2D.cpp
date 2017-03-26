@@ -1,7 +1,12 @@
+/*
+Leonardo de Souza Vieira
+25/03/2017
+*/
+
 #include "struct_space2D.hpp"
 
-
 using namespace std;
+
 
 int main(int argc, char const *argv[]) {
 

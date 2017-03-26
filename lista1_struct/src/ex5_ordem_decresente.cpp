@@ -24,7 +24,7 @@ void ordena(int A[], int n)
 }
 
 int main(int argc, char const *argv[]) {
-   int vet[10] =  { 10, 9, 8, 7, 6, 3, 20, 4, 3, 2 };
+   int vet[10] =  { 10, 9, 8, 7, 6, 3, 20, 4, 3, 100 };
    ordena(vet,10);
    for (size_t i = 0; i < 10; i++) {
       cout << vet[i] << endl;
